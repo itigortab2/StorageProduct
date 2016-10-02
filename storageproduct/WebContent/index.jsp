@@ -14,7 +14,7 @@
 	
 		<div class="login">
 		
-			<form action=LoginController method="get">
+			<form action=LoginController method="post">
 				<h2>Логин</h2>	
 				<input class="inp" name="pageName" />
 				<h2>Пароль</h2>
