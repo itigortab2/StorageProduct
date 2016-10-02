@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+.main 
+{
+	width:90%;
+	margin: 0 auto;
+	
+}
+
+.login {
+	
+	
+	margin:0 auto;
+	min-width:20%;
+	width:60%;
+	
+}
+
+.login form {
+	width:100%;
+	float:left;
+}
+
+.login .inp {
+	width:40%;
+	float:left;
+	padding:5px 10px; 
+	border:1px solid #ccc;
+	
+}
