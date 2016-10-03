@@ -10,12 +10,14 @@ import java.sql.SQLException;
 public class MySqlDaoFactory implements DaoFactory {
 
     private String user = "root"; 
-    private String password = ""; 
-    private String url = "jdbc:mysql://localhost:3308/mydbtest"; //URL адрес
+    private String password = "12345"; 
+    private String url = "jdbc:mysql://localhost:3308/storageproduct"; 
     private String driver = "com.mysql.jdbc.Driver"; 
     
     public Connection getConnection() throws SQLException {
+    	
         return DriverManager.getConnection(url, user, password);
+    
     }
 
     @Override

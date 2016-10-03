@@ -2,24 +2,25 @@ package ru.storageproduct.Model;
 
 public class Product {
 
-	private String title;
-	private String description;
-	private Double price;
+	private Integer idProduct;
+	private String  title;
+	private String  description;
+	private Double  price;
 	private Integer number;
-	private String img;
-	private Category cat;
+	private String  img;
+	private String  cat;
 	
 	public Product() { }
 	
 	public void  initProduct(String title, String descr, 
-			Double price, Integer number, String img, Category cat )
+			Double price, Integer number, String img, String cat )
 	{
 		this.title = title;
 		this.description = descr;
 		this.price = price;
 		this.number = number;
 		this.img = img;
-		
+		this.cat = cat;
 	}
 	
 	
@@ -72,6 +73,27 @@ public class Product {
 	{
 		this.img = img;
 	}
+	
+	public void setIdProduct(Integer id)
+	{
+		this.idProduct = id;
+	}
+	
+	public Integer getIdProduct()
+	{
+		return idProduct;
+	}
+	
+	public String getCat()
+	{
+		return cat;
+	}
+	
+	public void setCat(String cat)
+	{
+		this.cat = cat;
+	}
+	
 	
 	
 }

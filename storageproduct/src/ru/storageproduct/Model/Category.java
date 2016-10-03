@@ -2,17 +2,29 @@ package ru.storageproduct.Model;
 
 public class Category {
 
+	private Integer idCategory;
 	private String title;
 	private String description;
 	
 	public Category(){ }
 	
-	public void initCategory(String title, String descr)
+	public void initCategory(Integer id, String title, String descr)
 	{
-		
+		this.idCategory = id;
 		this.title = title;
 		this.description = description;
 	
+	}
+	
+
+	public Integer getIdCategory()
+	{
+		return idCategory;
+	}
+	
+	public void setIdCategory(Integer id)
+	{
+		this.idCategory = id;
 	}
 	
 	public String getTitle()

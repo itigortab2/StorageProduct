@@ -23,16 +23,16 @@ public class MySqlCategoryDao implements CategoryDAO {
     public Category read(int key) throws SQLException 
     {
         
-	   	String sql = "SELECT * FROM mydbtest.category WHERE id = ?;";
+	   	String sql = "SELECT * FROM storageproduct.category WHERE id = ?;";
        
 	   	PreparedStatement stm = connection.prepareStatement(sql);
-
-        
 
         ResultSet rs = stm.executeQuery();
         rs.next();
         
         Category g = new Category();
+        
+        g.setIdCategory(rs.getInt("idCategory"));
         g.setTitle(rs.getString("title"));
         g.setDescription(rs.getString("description"));
         
@@ -40,7 +40,7 @@ public class MySqlCategoryDao implements CategoryDAO {
     }
 
    @Override
-    public void update(Category group) {
+    public void update(Category category) {
 
     }
 
@@ -51,12 +51,13 @@ public class MySqlCategoryDao implements CategoryDAO {
 
    @Override
     public List<Category> getAll() throws SQLException {
-        String sql = "SELECT * FROM daotalk.Group;";
+        String sql = "SELECT * FROM storageproduct.category;";
         PreparedStatement stm = connection.prepareStatement(sql);
         ResultSet rs = stm.executeQuery();
         List<Category> list = new ArrayList<Category>();
         while (rs.next()) {
             Category g = new Category();
+            g.setIdCategory(rs.getInt("idCategory"));
             g.setTitle(rs.getString("title"));
             g.setDescription(rs.getString("description"));
             list.add(g);
