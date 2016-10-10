@@ -15,10 +15,7 @@ public class MySqlDaoFactory implements DaoFactory {
     private String driver = "com.mysql.jdbc.Driver"; 
     
     public Connection getConnection() throws SQLException  {
-    	
-    	
-       
-			
+   
         	return DriverManager.getConnection(url, user, password);    	
     }
 
@@ -31,7 +28,7 @@ public class MySqlDaoFactory implements DaoFactory {
     @Override
     public ProductDAO getProductDao(Connection connection) {
         
-    	return null;
+    	return new MySqlProductDao(connection);
     }
 
     

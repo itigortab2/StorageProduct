@@ -3,6 +3,7 @@ package ru.storageproduct.IDAO;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+
 import ru.storageproduct.Model.*;
 
 public interface DaoFactory {

@@ -2,23 +2,17 @@ package ru.storageproduct.IDAO;
 
 import java.sql.SQLException;
 import java.util.List;
+
 import ru.storageproduct.Model.Category;
 
 public interface CategoryDAO {
-
    
-    public Category create();
-
+    public Category read(String key) throws SQLException;
    
-    public Category read(int key) throws SQLException;
-
+    public void create(Category cat);
    
-    public void update(Category cat);
+    public void delete(String title);
 
-   
-    public void delete(Category cat);
-
-   
-    public List<Category> getAll() throws SQLException;
-	
+    public List<Category> getNumSelect(String num) throws SQLException;
+	  
 }

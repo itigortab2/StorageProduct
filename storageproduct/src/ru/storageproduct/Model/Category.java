@@ -1,30 +1,27 @@
 package ru.storageproduct.Model;
 
-public class Category {
+import java.io.Serializable;
 
-	private Integer idCategory;
-	private String title;
-	private String description;
+/* Стандартный javabean объект */
+
+public class Category implements Serializable {
+
+	private String 	title;
+	private String 	description;
 	
-	public Category(){ }
+	public Category(){ 
+		
+		title = "";
+		description = "";
+	}
 	
-	public void initCategory(Integer id, String title, String descr)
+	public Category(String title, String descr)
 	{
-		this.idCategory = id;
+		super();
+		
 		this.title = title;
-		this.description = description;
+		this.description = descr;
 	
-	}
-	
-
-	public Integer getIdCategory()
-	{
-		return idCategory;
-	}
-	
-	public void setIdCategory(Integer id)
-	{
-		this.idCategory = id;
 	}
 	
 	public String getTitle()
@@ -46,7 +43,6 @@ public class Category {
 	{
 		this.description = descr;
 	}
-	
 	
 	
 }

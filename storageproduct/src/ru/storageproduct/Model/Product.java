@@ -1,6 +1,8 @@
 package ru.storageproduct.Model;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
 
 	private Integer idProduct;
 	private String  title;
@@ -8,13 +10,24 @@ public class Product {
 	private Double  price;
 	private Integer number;
 	private String  img;
-	private String  cat;
+	private Integer cat;
 	
-	public Product() { }
+	public Product() {
+		
+		idProduct = 0;
+		title = "";
+		description = "";
+		price = 0.0;
+		number = 0;
+		img = "";
+		cat = 0;		
+	}
 	
-	public void  initProduct(String title, String descr, 
-			Double price, Integer number, String img, String cat )
+	public Product(String title, String descr, 
+			Double price, Integer number, String img, Integer cat )
 	{
+		super();
+		
 		this.title = title;
 		this.description = descr;
 		this.price = price;
@@ -84,12 +97,12 @@ public class Product {
 		return idProduct;
 	}
 	
-	public String getCat()
+	public Integer getCat()
 	{
 		return cat;
 	}
 	
-	public void setCat(String cat)
+	public void setCat(Integer cat)
 	{
 		this.cat = cat;
 	}

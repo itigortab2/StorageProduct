@@ -1,25 +1,20 @@
 package ru.storageproduct.IDAO;
 
-import ru.storageproduct.Model.Product;
-
+import java.sql.SQLException;
 import java.util.List;
+
+import ru.storageproduct.Model.Product;
 
 
 public interface ProductDAO {
-
 	
-    public Product create();
 
-    
     public Product read(int key);
-
     
-    public void update(Product product);
-
+    public void create(Product product);
     
-    public void delete(Product product);
-
+    public void delete(String product);
   
-    public List<Product> getAll();
+    public List<Product> getNumSelect(String numSelCat) throws SQLException;
 	
 }
