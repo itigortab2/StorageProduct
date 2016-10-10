@@ -9,34 +9,33 @@ import java.sql.SQLException;
 
 public class MySqlDaoFactory implements DaoFactory {
 
-    private String user = "root"; 
-    private String password = "12345"; 
-    private String url = "jdbc:mysql://localhost:3308/storageproduct"; 
-    private String driver = "com.mysql.jdbc.Driver"; 
-    
-    public Connection getConnection() throws SQLException  {
-   
-        	return DriverManager.getConnection(url, user, password);    	
-    }
+	private String user = "root";
+	private String password = "12345";
+	private String url = "jdbc:mysql://localhost:3308/storageproduct";
+	private String driver = "com.mysql.jdbc.Driver";
 
-    @Override
-    public CategoryDAO getCategoryDao(Connection connection) {
-        
-    	return new MySqlCategoryDao(connection);
-    }
+	public Connection getConnection() throws SQLException {
 
-    @Override
-    public ProductDAO getProductDao(Connection connection) {
-        
-    	return new MySqlProductDao(connection);
-    }
+		return DriverManager.getConnection(url, user, password);
+	}
 
-    
-    public MySqlDaoFactory() {
-        try {
-            Class.forName(driver);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+	@Override
+	public CategoryDAO getCategoryDao(Connection connection) {
+
+		return new MySqlCategoryDao(connection);
+	}
+
+	@Override
+	public ProductDAO getProductDao(Connection connection) {
+
+		return new MySqlProductDao(connection);
+	}
+
+	public MySqlDaoFactory() {
+		try {
+			Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 }
