@@ -48,8 +48,9 @@ public class RegisterController extends HttpServlet {
 			String email = request.getParameter("email");
 
 			ServletContext sc = this.getServletContext();
+			
 			String path = sc.getRealPath("/WEB-INF/users.xml");
-
+			System.out.println(path);
 			if (UserIO.findUser(login, path)) {
 
 				PrintWriter out = response.getWriter();

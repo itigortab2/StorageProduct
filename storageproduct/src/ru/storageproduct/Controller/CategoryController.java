@@ -79,15 +79,6 @@ public class CategoryController extends HttpServlet {
 
 		try {
 
-			String numSelCat = request.getParameter("selectCategory");
-
-			List<Category> listCategory = new ArrayList<>();
-			if (numSelCat == null)
-				numSelCat = SELECT_NUMBER;
-
-			for (Category c : cat.getNumSelect(numSelCat))
-				listCategory.add(c);
-
 			String titleCat = request.getParameter("title—at");
 
 			if (titleCat != null)
@@ -98,6 +89,15 @@ public class CategoryController extends HttpServlet {
 
 			if (catTitle != null && catDescription != null)
 				addCat(catTitle, catDescription);
+
+			String numSelCat = request.getParameter("selectCategory");
+
+			List<Category> listCategory = new ArrayList<>();
+			if (numSelCat == null)
+				numSelCat = SELECT_NUMBER;
+			
+			for (Category c : cat.getNumSelect(numSelCat))
+				listCategory.add(c);
 
 			request.getSession().setAttribute("listCategory", listCategory);
 

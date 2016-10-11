@@ -11,6 +11,9 @@
 <body>
 	<div id="header">
 		<h1>Система управления складом товаров</h1>
+		<span class="action"> <a href="register.jsp"><input
+				type="submit" value="Регистрация"></a>
+		</span>
 	</div>
 	<div class="main">
 		<div class="login">
@@ -21,10 +24,7 @@
 					class="cbutton" type="submit" value="войти" />
 				</span>
 			</form>
-			<a class="cbutton" type="submit" href="register.jsp">Зарегистрироваться
-			</a>
 		</div>
 	</div>
-
 </body>
 </html>

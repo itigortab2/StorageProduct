@@ -26,7 +26,7 @@ public class MySqlCategoryDao implements CategoryDAO {
 		rs.next();
 
 		Category g = new Category();
-
+		g.setIdCat(rs.getInt("idCat"));
 		g.setTitle(rs.getString("title"));
 		g.setDescription(rs.getString("description"));
 
@@ -85,7 +85,8 @@ public class MySqlCategoryDao implements CategoryDAO {
 		while (rs.next()) {
 
 			Category g = new Category();
-
+			
+			g.setIdCat(rs.getInt("idCat"));
 			g.setTitle(rs.getString("title"));
 			g.setDescription(rs.getString("description"));
 			list.add(g);

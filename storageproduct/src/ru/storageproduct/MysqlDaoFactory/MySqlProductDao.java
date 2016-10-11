@@ -22,28 +22,36 @@ public class MySqlProductDao implements ProductDAO {
 	}
 
 	@Override
-	public Product read(int key) {
+	public List<Product> read(int idCat) {
 
-		String sql = "SELECT * FROM storageproduct.product WHERE id = " + key
+		String sql = "SELECT * FROM storageproduct.product WHERE cat = " + idCat
 				+ ";";
-
+		
 		try {
 
 			PreparedStatement stm = connection.prepareStatement(sql);
 			ResultSet rs = stm.executeQuery();
-			rs.next();
 
-			Product p = new Product();
+			List<Product> list = new ArrayList<Product>();
 
-			p.setIdProduct(rs.getInt("idProduct"));
-			p.setTitle(rs.getString("title"));
-			p.setDescription(rs.getString("description"));
-			p.setPrice(rs.getDouble("price"));
-			p.setNumber(rs.getInt("number"));
-			p.setCat(rs.getInt("cat"));
-			p.setImg(rs.getString("img"));
+			while (rs.next()) {
 
-			return p;
+				Product p = new Product();
+
+				p.setIdProduct(rs.getInt("idProduct"));
+				p.setTitle(rs.getString("title"));
+				p.setDescription(rs.getString("description"));
+				p.setPrice(rs.getDouble("price"));
+				p.setNumber(rs.getInt("number"));
+				p.setCat(rs.getInt("cat"));
+				p.setImg(rs.getString("img"));
+
+				list.add(p);
+
+			}
+
+			return list;
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
@@ -56,14 +64,24 @@ public class MySqlProductDao implements ProductDAO {
 	@Override
 	public void create(Product p) {
 
-		String sql = "INSERT INTO storageproduct.product" + "VALUES ("
-				+ p.getIdProduct() + "," + p.getTitle() + ","
-				+ p.getDescription() + "," + p.getPrice() + "," + p.getNumber()
-				+ "," + p.getImg() + "," + p.getCat() + ");";
+		String sql = "INSERT INTO storageproduct.product (title, description, price, img, number,cat) "
+				+ "VALUES ('"
+				+ p.getTitle()
+				+ "','"
+				+ p.getDescription()
+				+ "',"
+				+ p.getPrice()
+				+ ",'"
+				+ p.getImg()
+				+ "',"
+				+ p.getNumber()
+				+ ","
+				+ p.getCat() + ");";
 
 		try {
 
 			PreparedStatement stm = connection.prepareStatement(sql);
+			stm.executeUpdate(sql);
 		} catch (SQLException e) {
 
 			e.printStackTrace();

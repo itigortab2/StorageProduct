@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 public class Category implements Serializable {
 
+	private Integer idCat;
 	private String title;
 	private String description;
 
@@ -23,6 +24,15 @@ public class Category implements Serializable {
 
 	}
 
+	public Integer getIdCat() {
+		return idCat;
+	}
+
+	public void setIdCat(Integer idCat) {
+		this.idCat = idCat;
+	}
+
+	
 	public String getTitle() {
 		return title;
 	}

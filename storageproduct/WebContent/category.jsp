@@ -64,7 +64,7 @@
 			</c:if>
 
 			<form class="selcont" action="CategoryController" method="post">
-				<span>Количество записей на странице:</span> <select
+				<span>Количество записей:</span> <select
 					name="selectCategory">
 					<option>5</option>
 					<option>10</option>

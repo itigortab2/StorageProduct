@@ -8,7 +8,7 @@
 <div class="rightaction">
 	<form class="delcat" action="ProductController" method="post">
 
-		<select name="title">
+		<select name="titlePr">
 
 			<c:forEach var="pr" items="${sessionScope.productList}">
 				<option><c:out value="${pr.getTitle()}" /></option>

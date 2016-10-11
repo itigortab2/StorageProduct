@@ -7,8 +7,8 @@ import ru.storageproduct.Model.Product;
 
 public interface ProductDAO {
 
-	public Product read(int key);
-
+	public List<Product> read(int idCat);
+   
 	public void create(Product product);
 
 	public void delete(String product);

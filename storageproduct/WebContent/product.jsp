@@ -58,11 +58,20 @@
 			</c:if>
 
 			<form class="selcont" action="ProductController" method="post">
-				<span>Количество записей на странице:</span> <select name="select">
+				<span>Количество записей:</span> <select name="selectPr">
 					<option>5</option>
 					<option>10</option>
 					<option>15</option>
 					<option>Все</option>
+				</select> <input type="submit" value="Показать" />
+			</form>
+
+			<form class="selcont" action="ProductController" method="post">
+				<span>Категории:</span> <select name="selectCat">
+					<c:forEach var="cat" items="${sessionScope.listCategory}">
+						<option>${cat.getTitle()}</option>
+					</c:forEach>
+
 				</select> <input type="submit" value="Показать" />
 			</form>
 		</div>

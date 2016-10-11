@@ -45,26 +45,26 @@ public class UserIO {
 		Element root = document.getDocumentElement();
 
 		Element u = document.createElement("user");
-
 		Element login = document.createElement("login");
+		
 		login.appendChild(document.createTextNode(user.getLogin()));
 		u.appendChild(login);
 
 		Element password = document.createElement("password");
 		password.appendChild(document.createTextNode(user.getPassword()));
 		u.appendChild(password);
-
+		
 		Element email = document.createElement("email");
 		email.appendChild(document.createTextNode(user.getEmail()));
 		u.appendChild(email);
-
+		
 		Element permission = document.createElement("permission");
 		permission.appendChild(document.createTextNode(user.getPermission()
 				.toString()));
 		u.appendChild(permission);
 
 		root.appendChild(u);
-
+		
 		DOMSource source = new DOMSource(document);
 
 		TransformerFactory transformerFactory = TransformerFactory
@@ -72,6 +72,7 @@ public class UserIO {
 		Transformer transformer = transformerFactory.newTransformer();
 		StreamResult result = new StreamResult(filepath);
 		transformer.transform(source, result);
+		
 	}
 
 	public static boolean findUser(String login, String filepath)
