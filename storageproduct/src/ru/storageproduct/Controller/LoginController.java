@@ -55,22 +55,27 @@ public class LoginController extends HttpServlet {
 			String login = request.getParameter("login");
 			String password = request.getParameter("password");
 
+			/* Path to users.xml */
 			ServletContext sc = this.getServletContext();
-			String path = sc.getRealPath("/WEB-INF/users.xml");
-
+			String path = sc.getRealPath("WEB-INF/users.xml");
+			
 			if (!UserIO.authUser(login, password, path)) {
 
 				response.sendRedirect("register.jsp");
 
 			} else {
+				
+				/*Checking on the correct of username and password */
+				
 				User user = new User();
-
+				
 				String lineuser = UserIO.getStringUser(login, path);
-
-				System.out.println(lineuser);
+					
+				/* Parsing of the users data string */
 
 				StringTokenizer st = new StringTokenizer(lineuser, "|");
-
+				
+				/* Insert of data user out the array strings */
 				user.setLogin(st.nextToken());
 				user.setPassword(st.nextToken());
 				user.setEmail(st.nextToken());
@@ -78,6 +83,7 @@ public class LoginController extends HttpServlet {
 
 				HttpSession session = request.getSession(true);
 
+				
 				session.setAttribute("user", user);
 
 				RequestDispatcher dispatcher = request.getServletContext()

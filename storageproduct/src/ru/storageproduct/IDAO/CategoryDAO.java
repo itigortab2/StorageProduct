@@ -3,7 +3,7 @@ package ru.storageproduct.IDAO;
 import java.sql.SQLException;
 import java.util.List;
 
-import ru.storageproduct.Model.Category;
+import ru.storageproduct.Model.*;
 
 public interface CategoryDAO {
 

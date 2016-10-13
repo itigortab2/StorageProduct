@@ -26,16 +26,13 @@ import ru.storageproduct.MysqlDaoFactory.MySqlDaoFactory;
 public class CategoryController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
-	private static final String SELECT_NUMBER = "5";
-
-	private DaoFactory conn;
-	private CategoryDAO cat;
+	private static final String SELECT_NUMBER = "5" ; /* Default variable is for view of list products on the page */
+	private 			 DaoFactory conn;
+	private 			 CategoryDAO cat;
 
 	public CategoryController() {
 
 		super();
-
 		conn = new MySqlDaoFactory();
 
 		try {
@@ -61,13 +58,16 @@ public class CategoryController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	
+	/* Method for adding new category */
 	protected void addCat(String catTitle, String catDescription) {
 
 		Category temp = new Category(catTitle, catDescription);
 		cat.create(temp);
 
 	}
-
+	
+	/* Method for deleting product */
 	protected void deleteCat(String titleCat) {
 
 		cat.delete(titleCat);
@@ -78,27 +78,32 @@ public class CategoryController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		try {
-
-			String titleCat = request.getParameter("title—at");
+			/* Deleting category */
+			String titleCat = request.getParameter("titleCat");
 
 			if (titleCat != null)
 				deleteCat(titleCat);
 
+			/* Adding category */
 			String catTitle = request.getParameter("cattitle");
 			String catDescription = request.getParameter("catdescription");
 
 			if (catTitle != null && catDescription != null)
 				addCat(catTitle, catDescription);
 
+			/* Select controller */
 			String numSelCat = request.getParameter("selectCategory");
 
-			List<Category> listCategory = new ArrayList<>();
+			List<Category> listCategory = new ArrayList<Category>();
 			if (numSelCat == null)
 				numSelCat = SELECT_NUMBER;
+			
+			/* Forming of list with type Category for output */
 			
 			for (Category c : cat.getNumSelect(numSelCat))
 				listCategory.add(c);
 
+			/* Forming of list with type Category for output */
 			request.getSession().setAttribute("listCategory", listCategory);
 
 			RequestDispatcher dispatcher = request.getServletContext()
@@ -108,7 +113,5 @@ public class CategoryController extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }

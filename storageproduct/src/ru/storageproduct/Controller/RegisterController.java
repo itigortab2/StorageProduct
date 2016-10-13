@@ -43,24 +43,30 @@ public class RegisterController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
 
+			/* Get parametres from the form  */
 			String login = request.getParameter("login");
 			String password = request.getParameter("password");
 			String email = request.getParameter("email");
 
+			
+			/* Path of users file */
 			ServletContext sc = this.getServletContext();
 			
 			String path = sc.getRealPath("/WEB-INF/users.xml");
 			System.out.println(path);
+			
+			/* РЎheck are correct of the username*/
 			if (UserIO.findUser(login, path)) {
 
 				PrintWriter out = response.getWriter();
 
 				response.setContentType("text/html;charset=UTF-8");
-				out.println("Уже есть такой юзер!");
-				out.println("<a href='index.jsp'>Вернуться</a> ");
+				out.println("РЈР¶Рµ РµСЃС‚СЊ С‚Р°РєРѕР№ СЋР·РµСЂ!");
+				out.println("<a href='index.jsp'>Р’РµСЂРЅСѓС‚СЊСЃСЏ</a> ");
 
 			} else {
-
+				
+				/* Add object User */
 				User user = new User(login, password, email, 0);
 				System.out.println(login);
 

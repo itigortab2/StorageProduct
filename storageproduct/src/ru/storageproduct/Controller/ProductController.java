@@ -25,16 +25,15 @@ import com.mysql.jdbc.Connection;
 @WebServlet("/ProductController")
 public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String SELECT_NUMBER = "5";
-	private DaoFactory conn;
-	private ProductDAO pr;
+	private static final String SELECT_NUMBER = "5"; /* Default variable is for view of list products on the page */
+	private 			 DaoFactory conn;
+	private 			 ProductDAO pr;
 
 	public ProductController() {
-
+		
 		super();
-
 		conn = new MySqlDaoFactory();
-
+		
 		try {
 
 			pr = conn.getProductDao((Connection) conn.getConnection());
@@ -54,6 +53,7 @@ public class ProductController extends HttpServlet {
 
 	}
 
+	/* Method adding new product */
 	protected void addProduct(String prTitle, String prDescription,
 			Double price, Integer number, String img, Integer idCat) {
 
@@ -63,6 +63,7 @@ public class ProductController extends HttpServlet {
 
 	}
 
+	/* Method deleting product */
 	protected void deleteProduct(String titleProduct) {
 
 		pr.delete(titleProduct);
@@ -98,23 +99,25 @@ public class ProductController extends HttpServlet {
 			String prImg = request.getParameter("primg");
 			String prIdCat = request.getParameter("pridcat");
 
-			/* Forming */
 			if (prTitle != null && prDescription != null)
 				addProduct(prTitle, prDescription, Double.parseDouble(prPrice),
 						Integer.parseInt(prNumber), prImg,
 						Integer.parseInt(prIdCat));
-			List<Product> list = new ArrayList<>();
+			List<Product> list = new ArrayList<Product>();
 
+			/* Select controller */
 			String selectCat = request.getParameter("selectCat");
 
 			if (selectCat != null) {
-				List<Category> temp = new ArrayList<>();
-				
-				
-				for (Category c : (List<Category>) request.getSession().getAttribute(
-						"listCategory"))
+				List<Category> temp = new ArrayList<Category>();
+
+				/* Forming of list with type Category for output */
+
+				for (Category c : (List<Category>) request.getSession()
+						.getAttribute("listCategory"))
 					temp.add(c);
 
+				/* Forming of list with type Product for output by the category */
 				for (Category c : temp) {
 					if (c.getTitle().equals(selectCat)) {
 
@@ -130,7 +133,7 @@ public class ProductController extends HttpServlet {
 				for (Product l : pr.getNumSelect(numSelCat))
 					list.add(l);
 			}
-
+			/* Adding of the "productList" in the session */
 			request.getSession().setAttribute("productList", list);
 
 			RequestDispatcher dispatcher = request.getServletContext()
