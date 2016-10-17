@@ -1,91 +1,61 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>mstp</groupId>
+	<artifactId>mstp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 
-  <groupId>ru.storageproduct</groupId>
-  <artifactId>storageproduct</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
+		</dependency>
 
-  <name>storageproduct</name>
-  <url>http://maven.apache.org</url>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+			<scope>provided</scope>
+		</dependency>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.1.2</version>
+			<scope>provided</scope>
+		</dependency>
+	
 
-  <dependencies>
-	  <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.6</version>
-        </dependency>
-
-<dependency>
-  <groupId>jstl</groupId>
-  <artifactId>jstl</artifactId>
-  <version>1.2</version>
-  <scope>compile</scope>
-</dependency>
-
-<dependency>
-  <groupId>taglibs</groupId>
-  <artifactId>standard</artifactId>
-  <version>1.1.2</version>
-  <scope>compile</scope>
-</dependency>
-
-<dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
     <groupId>javax.servlet</groupId>
     <artifactId>javax.servlet-api</artifactId>
-    <version>3.0.1</version>
+    <version>3.1.0</version>
     <scope>provided</scope>
 </dependency>
-
-<dependency>
-	<groupId>javax</groupId>
-	<artifactId>javaee-api</artifactId>
-	<version>7.0</version>
-</dependency>
-  
-   
-  </dependencies>
- 
-    
-    <build>
-    <outputDirectory>target2</outputDirectory>
-          <finalName>ROOT</finalName>
-         <sourceDirectory>src</sourceDirectory>
-     <resources>
-                <resource>
-                    <directory>src</directory>
-                    
-                </resource>
-      </resources>
-            
-        <plugins>
- 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
-                </configuration>
-            </plugin>
- 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.1.1</version>
-                <configuration>
-                   <directory>src\</directory>
-                   <webXml>WebContent\WEB-INF\web.xml</webXml>
-                   
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
- 
-  
+	  </dependencies>
+	<build>	
+			<plugins>
+			<plugin>
+        		<artifactId>maven-compiler-plugin</artifactId>
+        		<version>2.3.2</version>
+        		<configuration>
+           			  <source>1.7</source>
+        			  <target>1.7</target>
+       			 </configuration>
+    		</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.1.1</version>
+				</plugin>
+			</plugins>
+		</build>
 </project>
