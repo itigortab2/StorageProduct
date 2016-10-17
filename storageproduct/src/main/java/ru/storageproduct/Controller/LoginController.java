@@ -2,6 +2,7 @@ package ru.storageproduct.Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -11,17 +12,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
 import ru.storageproduct.Data.UserIO;
 import ru.storageproduct.Model.User;
 
-@WebServlet("/RegisterController")
-public class RegisterController extends HttpServlet {
+/**
+ * Servlet implementation class LoginController
+ */
+@WebServlet("/LoginController")
+public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public RegisterController() {
+	public LoginController() {
+
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -41,38 +49,45 @@ public class RegisterController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+
 		try {
 
-			/* Get parametres from the form  */
 			String login = request.getParameter("login");
 			String password = request.getParameter("password");
-			String email = request.getParameter("email");
 
-			
-			/* Path of users file */
+			/* Path to users.xml */
 			ServletContext sc = this.getServletContext();
+			String path = sc.getRealPath("WEB-INF/users.xml");
 			
-			String path = sc.getRealPath("/WEB-INF/users.xml");
-			System.out.println(path);
-			
-			/* Сheck are correct of the username*/
-			if (UserIO.findUser(login, path)) {
+			if (!UserIO.authUser(login, password, path)) {
 
-				PrintWriter out = response.getWriter();
-
-				response.setContentType("text/html;charset=UTF-8");
-				out.println("Уже есть такой юзер!");
-				out.println("<a href='index.jsp'>Вернуться</a> ");
+				response.sendRedirect("register.jsp");
 
 			} else {
 				
-				/* Add object User */
-				User user = new User(login, password, email, 0);
-				System.out.println(login);
+				/*Checking on the correct of username and password */
+				
+				User user = new User();
+				
+				String lineuser = UserIO.getStringUser(login, path);
+					
+				/* Parsing of the users data string */
 
-				UserIO.add(user, path);
+				StringTokenizer st = new StringTokenizer(lineuser, "|");
+				
+				/* Insert of data user out the array strings */
+				user.setLogin(st.nextToken());
+				user.setPassword(st.nextToken());
+				user.setEmail(st.nextToken());
+				user.setPermission(Integer.parseInt(st.nextToken()));
 
-				response.sendRedirect("index.jsp");
+				HttpSession session = request.getSession(true);
+
+				session.setAttribute("user", user);
+
+				RequestDispatcher dispatcher = request.getServletContext()
+						.getRequestDispatcher("/CategoryController");
+				dispatcher.forward(request, response);
 
 			}
 

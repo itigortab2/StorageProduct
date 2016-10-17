@@ -37,13 +37,10 @@ public class Logout extends HttpServlet {
 	@SuppressWarnings("deprecation")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		
 		HttpSession s = request.getSession();
 		
-		/* Cleaning of the session  */
 		s.invalidate();
 		
-		/* Redirect on the page index.jsp  */
 		response.sendRedirect("index.jsp");
 	}
 

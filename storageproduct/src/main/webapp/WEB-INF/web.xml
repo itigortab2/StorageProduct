@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <jsp-config>
+    <jsp-property-group>
+        <url-pattern>*.jsp</url-pattern>
+        <page-encoding>UTF-8</page-encoding>
+    </jsp-property-group>
+	</jsp-config>
+  <context-param>
+    <param-name>javax.servlet.jsp.jstl.fmt.request.charset</param-name>
+    <param-value>UTF-8</param-value>
+  </context-param>
+  <servlet>
+    <display-name>Register</display-name>
+    <servlet-name>RegisterController</servlet-name>
+    <servlet-class>ru.storageproduct.Controller.RegisterController</servlet-class>
+  </servlet>
+  <servlet>
+    <display-name>Login</display-name>
+    <servlet-name>LoginController</servlet-name>
+    <servlet-class>ru.storageproduct.Controller.LoginController</servlet-class>
+  </servlet>
+  <servlet>
+    <display-name>SessionCheck</display-name>
+    <servlet-name>SessionCheck</servlet-name>
+    <servlet-class>ru.storageproduct.Controller.SessionCheck</servlet-class>
+  </servlet>
+  <servlet>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>ru.storageproduct.Controller.Logout</servlet-class>
+  </servlet>
+  <servlet>
+    <display-name>CategoryController</display-name>
+    <servlet-name>CategoryController</servlet-name>
+    <servlet-class>ru.storageproduct.Controller.ViewCategoryController</servlet-class>
+  </servlet>
+  <servlet>
+    <display-name>ProductController</display-name>
+    <servlet-name>ProductController</servlet-name>
+    <servlet-class>ru.storageproduct.Controller.ProductController</servlet-class>
+  </servlet>
+ <filter>
+    <filter-name>CharsetFilter</filter-name>
+    <filter-class>ru.storageproduct.Filter.CharsetFilter</filter-class>
+      <init-param>
+        <param-name>requestEncoding</param-name>
+        <param-value>UTF-8</param-value>
+      </init-param>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>CharsetFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+</web-app>
