@@ -37,7 +37,7 @@
   <servlet>
     <display-name>CategoryController</display-name>
     <servlet-name>CategoryController</servlet-name>
-    <servlet-class>ru.storageproduct.Controller.ViewCategoryController</servlet-class>
+    <servlet-class>ru.storageproduct.Controller.CategoryController</servlet-class>
   </servlet>
   <servlet>
     <display-name>ProductController</display-name>

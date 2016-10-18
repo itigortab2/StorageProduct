@@ -1,1 +1,1 @@
-CREATE SCHEMA `storageproduct` DEFAULT CHARACTER SET utf8 ;
+CREATE DATABASE `storageproduct` DEFAULT CHARACTER SET utf8 ;

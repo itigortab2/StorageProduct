@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link href="css/style.css" rel="stylesheet">
+	<link href="css/reset.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
 	<title>Main</title>
 </head>

@@ -84,7 +84,8 @@ public class LoginController extends HttpServlet {
 				HttpSession session = request.getSession(true);
 
 				session.setAttribute("user", user);
-
+				
+				
 				RequestDispatcher dispatcher = request.getServletContext()
 						.getRequestDispatcher("/CategoryController");
 				dispatcher.forward(request, response);
